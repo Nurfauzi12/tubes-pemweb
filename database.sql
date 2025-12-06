@@ -112,6 +112,46 @@ CREATE TABLE mahasiswa (
 );
 
 -- --------------------------------------------------------
+-- Table: CPL - Bisma Wirajovi Aulia (41122100061)
+-- --------------------------------------------------------
+
+CREATE TABLE `CPL` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `id_penyusun` INT(11) NOT NULL,
+  `id_matakuliah` INT(11) NOT NULL,
+  `cpl_prodi` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`id_penyusun`) REFERENCES `penyusun`(`id`),
+  FOREIGN KEY (`id_matakuliah`) REFERENCES `matakuliah`(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+-- Table: Dosen Pengampu - Priki (41122100055)
+-- --------------------------------------------------------
+CREATE TABLE `dosen_pengampu` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `id_penyusun` INT(11) NOT NULL,
+  `id_matakuliah` INT(11) NOT NULL,
+  `dosen_pengampu` VARCHAR(255) NOT NULL,
+  `semester` VARCHAR(50) NOT NULL,
+  `tahun_akademik` VARCHAR(20) NOT NULL,
+
+  PRIMARY KEY (`id`),
+
+  -- Relasi ke tabel penyusun
+  FOREIGN KEY (`id_penyusun`)
+    REFERENCES `penyusun`(`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+
+  -- Relasi ke tabel matakuliah
+  FOREIGN KEY (`id_matakuliah`)
+    REFERENCES `matakuliah`(`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
 -- Table: Matakuliah - Ghania Fazila (41122100060)
 -- --------------------------------------------------------
 
