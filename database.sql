@@ -109,3 +109,17 @@ CREATE TABLE mahasiswa (
     nim int(11) NOT NULL,
     periode_masuk varchar(255) NOT NULL
 );
+
+-- --------------------------------------------------------
+-- Table: CPL - Bisma Wirajovi Aulia (41122100061)
+-- --------------------------------------------------------
+
+CREATE TABLE `CPL` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `id_penyusun` INT(11) NOT NULL,
+  `id_matakuliah` INT(11) NOT NULL,
+  `cpl_prodi` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`id_penyusun`) REFERENCES `penyusun`(`id`),
+  FOREIGN KEY (`id_matakuliah`) REFERENCES `matakuliah`(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
