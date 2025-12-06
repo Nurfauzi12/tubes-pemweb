@@ -27,7 +27,7 @@ USE `tubes-web`;
 -- --------------------------------------------------------
 -- Table: Penyusun - Rafi Khoirulloh (41122100074)
 -- --------------------------------------------------------
-CREATE TABLE `Penyusun` (
+CREATE TABLE `penyusun` (
   `id` int(11) NOT NULL,
   `pengembangan_rps` varchar(255) NOT NULL,
   `koordinator_rumpun` varchar(255) NOT NULL,
@@ -37,7 +37,6 @@ CREATE TABLE `Penyusun` (
 -- --------------------------------------------------------
 -- Table: Rencana Pembelajaran - Mochamad Fajar Nurfauzi (41122100073)
 -- --------------------------------------------------------
-
 CREATE TABLE `rencana_pembelajaran` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_penyusun` int(11) NOT NULL,
@@ -56,13 +55,42 @@ CREATE TABLE `rencana_pembelajaran` (
 -- --------------------------------------------------------
 -- Table: bahan kajian - Surgana (41121100037)
 -- --------------------------------------------------------
-
 CREATE TABLE bahan_kajian (
     id INT PRIMARY KEY,
     id_penyusun INT NULL,
     id_matakuliah INT NULL,
     bahan_kajian TEXT NULL
 );
+
+-- --------------------------------------------------------
+-- Table: CPMK - Dwi Chandra Wijaya (41122100068)
+-- --------------------------------------------------------
+CREATE TABLE `cpmk` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `id_penyusun` VARCHAR(100) NOT NULL,
+  `id_matakuliah` VARCHAR(100) NOT NULL,
+  `cpmk` TEXT NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+  -- --------------------------------------------------------
+  -- Table: Korelasi CPL CPMK - Anggita Aulia (41122100059)
+  -- --------------------------------------------------------
+  CREATE TABLE `korelasi_cpl_cpmk` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `id_penyusun` int(11) NOT NULL,
+    `id_matakuliah` int(11) NOT NULL,
+    `id_sub_cpmk` int(11) NOT NULL,
+    `id_cpmk` int(11) NOT NULL,
+    `presentase` int(11) NOT NULL,
+    `bobot_penilaian` int(11) NOT NULL,
+
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`id_penyusun`) REFERENCES `penyusun`(`id`),
+    FOREIGN KEY (`id_matakuliah`) REFERENCES `matakuliah`(`id`),
+    FOREIGN KEY (`id_sub_cpmk`) REFERENCES `sub_cpmk`(`id`),
+    FOREIGN KEY (`id_cpmk`) REFERENCES `cpmk`(`id`)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 -- Table: Mahasiswa - Alshar Adam (41122100076)
