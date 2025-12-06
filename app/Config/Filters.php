@@ -5,7 +5,7 @@ namespace Config;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
-use CodeIgniter\Filters\Honeypot;
+use CodeIgniter\Filters\Honeypot; 
 use CodeIgniter\Filters\InvalidChars;
 use CodeIgniter\Filters\SecureHeaders;
 
@@ -25,6 +25,7 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
+        'usersAuth' => \App\Filters\UsersAuthFilter::class,
     ];
 
     /**
@@ -39,6 +40,18 @@ class Filters extends BaseConfig
             // 'honeypot',
             // 'csrf',
             // 'invalidchars',
+            // 'csrf',
+			'usersAuth' => [
+				'except' => [
+                    'home',
+                    'news',
+                    'news/*',
+                    'register',
+                    'register/*',
+					'login/*',
+					'logout/*'
+				]
+			]
         ],
         'after' => [
             'toolbar',
