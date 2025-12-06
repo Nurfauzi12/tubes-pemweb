@@ -39,18 +39,19 @@ CREATE TABLE `Penyusun` (
 -- --------------------------------------------------------
 
 CREATE TABLE `rencana_pembelajaran` (
-  `id` int(11) NOT NULL,
-  `id_penyusun` varchar(100) NOT NULL,
-  `id_matakuliah` year(4) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_penyusun` int(11) NOT NULL,
+  `id_matakuliah` int(11) NOT NULL,
   `minggu_ke` varchar(100) NOT NULL,
-  `sub_cpmk` varchar(100) NOT NULL,
-  `penilaian_indikator` varchar(100) NOT NULL,
-  `penilaian_teknik` varchar(100) NOT NULL,
-  `bentuk_pembelajaran` varchar(100) NOT NULL,
+  `sub_cpmk` varchar(255) NOT NULL,
+  `penilaian_indikator` varchar(255) NOT NULL,
+  `penilaian_teknik` varchar(255) NOT NULL,
+  `bentuk_pembelajaran` varchar(255) NOT NULL,
   `bobot_penilaian` varchar(100) NOT NULL,
-  `catatan` varchar(100) NOT NULL,
+  `catatan` varchar(255),
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`id_penyusun`) REFERENCES `penyusun`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 
 -- --------------------------------------------------------
 -- Table: bahan kajian - Surgana (41121100037)
@@ -62,3 +63,4 @@ CREATE TABLE bahan_kajian (
     id_matakuliah INT NULL,
     bahan_kajian TEXT NULL
 );
+
