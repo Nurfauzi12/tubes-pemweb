@@ -33,3 +33,20 @@ CREATE TABLE `Penyusun` (
   `koordinator_rumpun` varchar(255) NOT NULL,
   `ka_prodi` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+-- Table: Rencana Pembelajaran - Mochamad Fajar Nurfauzi (41122100073)
+-- --------------------------------------------------------
+
+CREATE TABLE `rencana_pembelajaran` (
+  `id` int(11) NOT NULL,
+  `id_penyusun` varchar(100) NOT NULL,
+  `id_matakuliah` year(4) NOT NULL,
+  `minggu_ke` varchar(100) NOT NULL,
+  `sub_cpmk` varchar(100) NOT NULL,
+  `penilaian_indikator` varchar(100) NOT NULL,
+  `penilaian_teknik` varchar(100) NOT NULL,
+  `bentuk_pembelajaran` varchar(100) NOT NULL,
+  `bobot_penilaian` varchar(100) NOT NULL,
+  `catatan` varchar(100) NOT NULL,
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
