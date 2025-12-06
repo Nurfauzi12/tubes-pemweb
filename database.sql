@@ -64,3 +64,15 @@ CREATE TABLE bahan_kajian (
     bahan_kajian TEXT NULL
 );
 
+-- --------------------------------------------------------
+-- Table: Mahasiswa - Alshar Adam (41122100076)
+-- --------------------------------------------------------
+
+CREATE TABLE mahasiswa (
+    id INT PRIMARY KEY,
+    nama_mahasiswa varchar(255) NOT NULL,
+    jenis_kelamin varchar(1) NOT NULL,
+    id_prodi int(11) NOT NULL,
+    nim int(11) NOT NULL,
+    periode_masuk varchar(255) NOT NULL
+);
