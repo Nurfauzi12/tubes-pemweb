@@ -50,3 +50,15 @@ CREATE TABLE `rencana_pembelajaran` (
   `bobot_penilaian` varchar(100) NOT NULL,
   `catatan` varchar(100) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+-- Table: CPMK - Mochamad Dwi Chandra Wijaya (41122100068)
+-- --------------------------------------------------------
+
+CREATE TABLE `cpmk` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `id_penyusun` VARCHAR(100) NOT NULL,
+  `id_matakuliah` VARCHAR(100) NOT NULL,
+  `cpmk` TEXT NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
