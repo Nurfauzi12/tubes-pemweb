@@ -50,3 +50,15 @@ CREATE TABLE `rencana_pembelajaran` (
   `bobot_penilaian` varchar(100) NOT NULL,
   `catatan` varchar(100) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+-- --------------------------------------------------------
+-- Table: bahan kajian - Surgana (41121100037)
+-- --------------------------------------------------------
+
+CREATE TABLE bahan_kajian (
+    id INT PRIMARY KEY,
+    id_penyusun INT NULL,
+    id_matakuliah INT NULL,
+    bahan_kajian TEXT NULL
+);
