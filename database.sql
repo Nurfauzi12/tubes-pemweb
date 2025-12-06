@@ -46,6 +46,7 @@ CREATE TABLE `rencana_pembelajaran` (
   `penilaian_indikator` varchar(255) NOT NULL,
   `penilaian_teknik` varchar(255) NOT NULL,
   `bentuk_pembelajaran` varchar(255) NOT NULL,
+  `materi` varchar(255) NOT NULL,
   `bobot_penilaian` varchar(100) NOT NULL,
   `catatan` varchar(255),
   PRIMARY KEY (`id`),
@@ -109,3 +110,20 @@ CREATE TABLE mahasiswa (
     nim int(11) NOT NULL,
     periode_masuk varchar(255) NOT NULL
 );
+
+-- --------------------------------------------------------
+-- Table: Matakuliah - Ghania Fazila (41122100060)
+-- --------------------------------------------------------
+
+CREATE TABLE `matakuliah` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `matakuliah` varchar(255) NOT NULL,
+  `kode` varchar(255) NOT NULL,
+  `rumpun` varchar(255) NOT NULL,
+  `bobotT` int(11) NOT NULL,
+  `bobotP` int(11) NOT NULL,
+  `semester` int(11) NOT NULL,
+  `tanggal` date NOT NULL,
+  
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
