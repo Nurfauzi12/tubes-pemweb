@@ -65,13 +65,13 @@ CREATE TABLE bahan_kajian (
 );
 
 -- --------------------------------------------------------
--- Table: CPMK - Dwi Chandra Wijaya (41121100068)
+-- Table: CPMK - Dwi Chandra Wijaya (41122100068)
 -- --------------------------------------------------------
 
 CREATE TABLE `cpmk` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `id_penyusun` VARCHAR(100) NOT NULL,
-  `id_matakuliah` VARCHAR(100) NOT NULL,
+  `id_penyusun` INT(20) NOT NULL,
+  `id_matakuliah` INT(20) NOT NULL,
   `cpmk` TEXT NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
