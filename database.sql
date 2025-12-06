@@ -53,14 +53,19 @@ CREATE TABLE `rencana_pembelajaran` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
--- Table: bahan kajian - Surgana (41121100037)
+-- Table: Bahan Kajian - Surgana (41121100037)
 -- --------------------------------------------------------
-CREATE TABLE bahan_kajian (
-    id INT PRIMARY KEY,
-    id_penyusun INT NULL,
-    id_matakuliah INT NULL,
-    bahan_kajian TEXT NULL
-);
+
+CREATE TABLE `bahan_kajian` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `id_penyusun` INT NULL,
+    `id_matakuliah` INT NULL,
+    `bahan_kajian` TEXT NULL,
+    PRIMARY KEY (`id`),
+    CONSTRAINT fk_bk_penyusun
+        FOREIGN KEY (`id_penyusun`) REFERENCES `penyusun`(`id`)
+          ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 -- Table: CPMK - Dwi Chandra Wijaya (41122100068)
