@@ -270,6 +270,33 @@ CREATE TABLE `korelasi_cpl_cpmk` (
     ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- ------------------------------------------------------------
+-- Table: mk_syarat
+-- Description: Mata Kuliah Syarat
+-- Author: Tri Wulandari (41122100067)
+-- Note: Missing sub_cpmk table reference - assuming it will be created
+-- ------------------------------------------------------------
+
+CREATE TABLE `matakuliah_syarat` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `id_penyusun` INT(11) DEFAULT NULL,
+  `id_matakuliah` INT(11) DEFAULT NULL,
+  `mk_syarat` VARCHAR(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `idx_penyusun` (`id_penyusun`),
+  INDEX `idx_matakuliah` (`id_matakuliah`),
+  CONSTRAINT `fk_matakuliah_syarat_penyusun`
+    FOREIGN KEY (`id_penyusun`)
+    REFERENCES `penyusun` (`id`)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_matakuliah_syarat_matakuliah`
+    FOREIGN KEY (`id_matakuliah`)
+    REFERENCES `matakuliah` (`id`)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 -- ============================================================
 -- Commit transaction
 -- ============================================================
