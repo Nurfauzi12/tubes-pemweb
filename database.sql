@@ -305,3 +305,40 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+CREATE TABLE nilai_kompetensi (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nim VARCHAR(20) NOT NULL,
+    id_rencana_pembelajaran INT NOT NULL,
+    nilai_kompetensi INT NOT NULL,
+    status VARCHAR(20) NOT NULL,
+    keterangan VARCHAR(255)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ------------------------------------------------------------
+-- Table: nilai_kompetensi
+-- Description: Nilai kompetensi mahasiswa per rencana pembelajaran
+-- Author: Santia Oktaviany (41122100063)
+-- ------------------------------------------------------------
+CREATE TABLE `nilai_kompetensi` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `nim` VARCHAR(20) NOT NULL,
+  `id_rencana_pembelajaran` INT(11) NOT NULL,
+  `nilai_kompetensi` INT(11) NOT NULL,
+  `status` VARCHAR(50) NOT NULL,
+  `keterangan` VARCHAR(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_nim_rencana` (`nim`, `id_rencana_pembelajaran`),
+  INDEX `idx_nim` (`nim`),
+  INDEX `idx_rencana_pembelajaran` (`id_rencana_pembelajaran`),
+  CONSTRAINT `fk_nilai_kompetensi_mahasiswa`
+    FOREIGN KEY (`nim`)
+    REFERENCES `mahasiswa`(`nim`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_nilai_kompetensi_rencana_pembelajaran`
+    FOREIGN KEY (`id_rencana_pembelajaran`)
+    REFERENCES `rencana_pembelajaran`(`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
