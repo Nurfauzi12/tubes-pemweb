@@ -66,7 +66,7 @@
                       <i class="ni ni-camera-compact text-dark opacity-10"></i>
                     </div>
                     <h5 class="text-white mb-1">Tugas Besar Web Kelompok 1</h5>
-                    <p>Fajar Nur Ramdhani, Rafi Khoirulloh, Ghania Fazila, Bisma Wirajovi</p>
+                    <p>M Fajar Nurfauzi, Rafi Khoirulloh, Ghania Fazila, Bisma Wirajovi</p>
                   </div>
                 </div>
                 <div class="carousel-item h-100" style="background-image: url('img/carousel-2.jpg'); background-size: cover;">
