@@ -86,3 +86,13 @@ $routes->group('table', function($routes){
 	$routes->get('rencana-pembelajaran/cari', 'RencanaPembelajaran::cari');
 
 });
+
+// grup routes master data
+$routes->group('master', function($routes){
+	// master data penyusun
+	$routes->get('penyusun', 'Penyusun::index');
+	$routes->add('penyusun/new', 'Penyusun::create');
+	$routes->add('penyusun/(:segment)/edit', 'Penyusun::edit/$1');
+	$routes->get('penyusun/(:segment)/delete', 'Penyusun::delete/$1');
+	$routes->get('penyusun/cari', 'Penyusun::cari');
+});

@@ -14,9 +14,20 @@
   <link rel="stylesheet" href="<?= base_url('css/nucleo-icons.css') ?>" />
   <link rel="stylesheet" href="<?= base_url('css/nucleo-svg.css') ?>" />
   <link rel="stylesheet" href="<?= base_url('css/argon-dashboard.css?v=2.0.4') ?>" />
-  <link rel="stylesheet" href="<?= base_url('fonts/https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700') ?>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
   <link href="../public/css/nucleo-svg.css" rel="stylesheet" />
+
+  <style>
+    * {
+      font-family: 'Montserrat', sans-serif;
+    }
+  </style>
 </head>
 
 <body>

@@ -3,7 +3,7 @@
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/argon-dashboard/pages/dashboard.html " target="_blank">
         <img src="<?= base_url('img/logo-ct-dark.png') ?>" class="navbar-brand-img h-100" alt="main_logo">
-        <span class="ms-1 font-weight-bold">Web Kelompok-9</span>
+        <span class="ms-1 font-weight-bold">Web Kelompok 1</span>
       </a>
     </div>
     <hr class="horizontal dark mt-0">
@@ -39,6 +39,19 @@
           <li><a class="dropdown-item" href="<?= base_url('table/table5c') ?>">Tabel 5.c</a></li>
         </ul>
       </li>
+
+        <li class="nav-item" id="masterDataDropdown">
+        <a class="nav-link" href="#">
+          <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="ni ni-archive-2 text-success text-sm opacity-10"></i>
+          </div>
+          <span class="nav-link-text ms-1">Master Data</span>
+          <i class="fas fa-chevron-down ms-auto"></i>
+        </a>
+        <ul class="dropdown-menu bg-gray-100" aria-labelledby="masterDataDropdown" >
+          <li><a class="dropdown-item" href="<?= base_url('master/penyusun') ?>">Penyusun</a></li>
+        </ul>
+      </li>
     </ul>
 </div>
 <div class="sidenav-footer">
@@ -64,7 +77,16 @@
       dropdownMenu.classList.toggle('show');
 
       const chevronIcon = this.querySelector('.fa-chevron-down');
-    chevronIcon.classList.toggle('fa-chevron-up');
+      chevronIcon.classList.toggle('fa-chevron-up');
+    });
+
+    // Handle Master Data dropdown toggle
+    document.getElementById('masterDataDropdown').addEventListener('click', function () {
+      const dropdownMenu = this.querySelector('.dropdown-menu');
+      dropdownMenu.classList.toggle('show');
+
+      const chevronIcon = this.querySelector('.fa-chevron-down');
+      chevronIcon.classList.toggle('fa-chevron-up');
     });
   </script>
   </div>
