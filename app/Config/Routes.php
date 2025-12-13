@@ -85,6 +85,13 @@ $routes->group('table', function($routes){
 	$routes->get('rencana-pembelajaran/(:segment)/delete', 'RencanaPembelajaran::delete/$1');
 	$routes->get('rencana-pembelajaran/cari', 'RencanaPembelajaran::cari');
 
+	// nilai kompetensi
+	$routes->get('nilai-kompetensi', 'NilaiKompetensi::index');
+	$routes->add('nilai-kompetensi/new', 'NilaiKompetensi::create');
+	$routes->add('nilai-kompetensi/(:segment)/edit', 'NilaiKompetensi::edit/$1');
+	$routes->get('nilai-kompetensi/(:segment)/delete', 'NilaiKompetensi::delete/$1');
+	$routes->get('nilai-kompetensi/cari', 'NilaiKompetensi::cari');
+
 });
 
 // grup routes master data

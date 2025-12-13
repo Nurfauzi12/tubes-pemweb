@@ -1,6 +1,8 @@
 <?php namespace App\Controllers;
 
 use App\Models\RencanaPembelajaranModel;
+use App\Models\PenyusunModel;
+use App\Models\MatakuliahModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 
 class RencanaPembelajaran extends BaseController
@@ -17,8 +19,10 @@ class RencanaPembelajaran extends BaseController
     public function create()
     {
         // Load data untuk dropdown
-        $data['penyusun'] = $this->db->table('penyusun')->findAll();
-        $data['matakuliah'] = $this->db->table('matakuliah')->findAll();
+        $penyusunModel = new PenyusunModel();
+        $matakuliahModel = new MatakuliahModel();
+        $data['penyusun'] = $penyusunModel->findAll();
+        $data['matakuliah'] = $matakuliahModel->findAll();
 
         // Validasi data
         $validation = \Config\Services::validation();
@@ -67,8 +71,10 @@ class RencanaPembelajaran extends BaseController
         }
 
         // Load data untuk dropdown
-        $data['penyusun'] = $this->db->table('penyusun')->findAll();
-        $data['matakuliah'] = $this->db->table('matakuliah')->findAll();
+        $penyusunModel = new PenyusunModel();
+        $matakuliahModel = new MatakuliahModel();
+        $data['penyusun'] = $penyusunModel->findAll();
+        $data['matakuliah'] = $matakuliahModel->findAll();
 
         // Validasi data yang diubah
         $validation = \Config\Services::validation();
@@ -117,8 +123,10 @@ class RencanaPembelajaran extends BaseController
         $cari = $this->request->getGet('search');
         $model = new RencanaPembelajaranModel();
         $data['rencana_pembelajaran'] = $model->cariData($cari);
-        $data['penyusun'] = $this->db->table('penyusun')->findAll();
-        $data['matakuliah'] = $this->db->table('matakuliah')->findAll();
+        $penyusunModel = new PenyusunModel();
+        $matakuliahModel = new MatakuliahModel();
+        $data['penyusun'] = $penyusunModel->findAll();
+        $data['matakuliah'] = $matakuliahModel->findAll();
         echo view('rencana_pembelajaran/index', $data);
     }
 }
