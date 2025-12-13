@@ -74,9 +74,15 @@ $routes->group('table', function($routes){
 	$routes->get('table5c', 'table5c::index');
     $routes->get('table5c/(:segment)/preview', 'table5c::preview/$1');
     $routes->add('table5c/new', 'table5c::create');
-    $routes->add('table5c/(:segment)/edit', 'table5b::edit/$1');
-    $routes->get('table5c/(:segment)/delete', 'table5b::delete/$1');
+    $routes->add('table5c/(:segment)/edit', 'table5c::edit/$1');
+    $routes->get('table5c/(:segment)/delete', 'table5c::delete/$1');
     $routes->get('table5c/cari', 'table5c::cari');
 
+	// rencana pembelajaran
+	$routes->get('rencana-pembelajaran', 'RencanaPembelajaran::index');
+	$routes->add('rencana-pembelajaran/new', 'RencanaPembelajaran::create');
+	$routes->add('rencana-pembelajaran/(:segment)/edit', 'RencanaPembelajaran::edit/$1');
+	$routes->get('rencana-pembelajaran/(:segment)/delete', 'RencanaPembelajaran::delete/$1');
+	$routes->get('rencana-pembelajaran/cari', 'RencanaPembelajaran::cari');
 
 });
