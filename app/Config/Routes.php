@@ -95,4 +95,10 @@ $routes->group('master', function($routes){
 	$routes->add('penyusun/(:segment)/edit', 'Penyusun::edit/$1');
 	$routes->get('penyusun/(:segment)/delete', 'Penyusun::delete/$1');
 	$routes->get('penyusun/cari', 'Penyusun::cari');
+	// master data matakuliah
+	$routes->get('matakuliah', 'MataKuliah::index');
+	$routes->add('matakuliah/new', 'MataKuliah::create');
+	$routes->add('matakuliah/(:segment)/edit', 'MataKuliah::edit/$1');
+	$routes->get('matakuliah/(:segment)/delete', 'MataKuliah::delete/$1');
+	$routes->get('matakuliah/cari', 'MataKuliah::cari');
 });
