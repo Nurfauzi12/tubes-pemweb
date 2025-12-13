@@ -10,7 +10,8 @@ class MatakuliahModel extends Model
     protected $primaryKey = 'id';
     protected $returnType = 'array';
     protected $useTimestamps = false;
-
+    protected $useAutoIncrement = true;
+    
     protected $allowedFields = [
         'matakuliah',
         'kode',
