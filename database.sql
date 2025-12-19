@@ -33,6 +33,7 @@ DROP TABLE IF EXISTS `rencana_pembelajaran`;
 DROP TABLE IF EXISTS `dosen_pengampu`;
 DROP TABLE IF EXISTS `cpl`;
 DROP TABLE IF EXISTS `cpmk`;
+DROP TABLE IF EXISTS `sub_cpmk`;
 DROP TABLE IF EXISTS `bahan_kajian`;
 DROP TABLE IF EXISTS `mahasiswa`;
 DROP TABLE IF EXISTS `matakuliah`;
@@ -172,6 +173,30 @@ CREATE TABLE `cpl` (
     ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- ------------------------------------------------------------
+-- Table: sub_cpmk
+-- Description: Sub Capaian Pembelajaran Mata Kuliah
+-- Author: Fauzan NF (41121100043)
+-- ------------------------------------------------------------
+CREATE TABLE `sub_cpmk`(
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `id_penyusunan` INT(11) NOT NULL,
+  `id_matakuliah` INT(11) NOT NULL,
+  `sub_cpmk` TEXT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `idx_penyusun` (`id_penyusun`),
+  INDEX `idx_matakuliah` (`id_matakuliah`),
+  CONSTRAINT `fk_sub_cpmk_penyusun`
+    FOREIGN KEY (`id_penyusun`)
+    REFERENCES `penyusun`(`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_sub_cpmk_matakuliah`
+    FOREIGN KEY (`id_matakuliah`)
+    REFERENCES `matakuliah`(`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 -- ------------------------------------------------------------
 -- Table: dosen_pengampu
 -- Description: Data dosen pengampu mata kuliah
