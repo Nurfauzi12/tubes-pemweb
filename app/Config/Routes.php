@@ -95,4 +95,11 @@ $routes->group('master', function($routes){
 	$routes->add('penyusun/(:segment)/edit', 'Penyusun::edit/$1');
 	$routes->get('penyusun/(:segment)/delete', 'Penyusun::delete/$1');
 	$routes->get('penyusun/cari', 'Penyusun::cari');
+
+	// master data matakuliah syarat
+	$routes->get('matakuliah-syarat', 'MatakuliahSyarat::index');
+	$routes->add('matakuliah-syarat/new', 'MatakuliahSyarat::create');
+	$routes->add('matakuliah-syarat/(:segment)/edit', 'MatakuliahSyarat::edit/$1');
+	$routes->get('matakuliah-syarat/(:segment)/delete', 'MatakuliahSyarat::delete/$1');
+	$routes->get('matakuliah-syarat/cari', 'MatakuliahSyarat::cari');
 });

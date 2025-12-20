@@ -37,6 +37,7 @@
           <li><a class="dropdown-item" href="<?= base_url('table/table5a') ?>">Tabel 5.a</a></li>
           <li><a class="dropdown-item" href="<?= base_url('table/table5b') ?>">Tabel 5.b</a></li>
           <li><a class="dropdown-item" href="<?= base_url('table/table5c') ?>">Tabel 5.c</a></li>
+
         </ul>
       </li>
 
