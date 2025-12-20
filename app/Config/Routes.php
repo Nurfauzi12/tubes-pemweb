@@ -85,6 +85,13 @@ $routes->group('table', function($routes){
 	$routes->get('rencana-pembelajaran/(:segment)/delete', 'RencanaPembelajaran::delete/$1');
 	$routes->get('rencana-pembelajaran/cari', 'RencanaPembelajaran::cari');
 
+	// nilai kompetensi
+	$routes->get('nilai-kompetensi', 'NilaiKompetensi::index');
+	$routes->add('nilai-kompetensi/new', 'NilaiKompetensi::create');
+	$routes->add('nilai-kompetensi/(:segment)/edit', 'NilaiKompetensi::edit/$1');
+	$routes->get('nilai-kompetensi/(:segment)/delete', 'NilaiKompetensi::delete/$1');
+	$routes->get('nilai-kompetensi/cari', 'NilaiKompetensi::cari');
+
 });
 
 // grup routes master data
@@ -102,4 +109,11 @@ $routes->group('master', function($routes){
 	$routes->add('matakuliah-syarat/(:segment)/edit', 'MatakuliahSyarat::edit/$1');
 	$routes->get('matakuliah-syarat/(:segment)/delete', 'MatakuliahSyarat::delete/$1');
 	$routes->get('matakuliah-syarat/cari', 'MatakuliahSyarat::cari');
+	
+	// master data matakuliah
+	$routes->get('matakuliah', 'MataKuliah::index');
+	$routes->add('matakuliah/new', 'MataKuliah::create');
+	$routes->add('matakuliah/(:segment)/edit', 'MataKuliah::edit/$1');
+	$routes->get('matakuliah/(:segment)/delete', 'MataKuliah::delete/$1');
+	$routes->get('matakuliah/cari', 'MataKuliah::cari');
 });

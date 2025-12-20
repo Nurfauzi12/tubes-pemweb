@@ -29,14 +29,7 @@
         </a>
         <ul class="dropdown-menu bg-gray-100" aria-labelledby="tablesDropdown" >
           <li><a class="dropdown-item" href="<?= base_url('table/rencana-pembelajaran') ?>">Rencana Pembelajaran</a></li>
-          <li><a class="dropdown-item" href="<?= base_url('table/table3b71') ?>">Tabel 3.b.7-1</a></li>
-          <li><a class="dropdown-item" href="<?= base_url('table/table3b72') ?>">Tabel 3.b.7-2</a></li>
-          <li><a class="dropdown-item" href="<?= base_url('table/table3b73') ?>">Tabel 3.b.7-3</a></li>
-          <li><a class="dropdown-item" href="<?= base_url('table/table3b74') ?>">Tabel 3.b.7-4</a></li>
-          <li><a class="dropdown-item" href="<?= base_url('table/table4') ?>">Tabel 4</a></li>
-          <li><a class="dropdown-item" href="<?= base_url('table/table5a') ?>">Tabel 5.a</a></li>
-          <li><a class="dropdown-item" href="<?= base_url('table/table5b') ?>">Tabel 5.b</a></li>
-          <li><a class="dropdown-item" href="<?= base_url('table/table5c') ?>">Tabel 5.c</a></li>
+          <li><a class="dropdown-item" href="<?= base_url('table/nilai-kompetensi') ?>">Nilai Kompetensi</a></li>
 
         </ul>
       </li>
@@ -51,6 +44,7 @@
         </a>
         <ul class="dropdown-menu bg-gray-100" aria-labelledby="masterDataDropdown" >
           <li><a class="dropdown-item" href="<?= base_url('master/penyusun') ?>">Penyusun</a></li>
+          <li><a class="dropdown-item" href="<?= base_url('master/matakuliah') ?>">Mata Kuliah</a></li>
         </ul>
       </li>
     </ul>
