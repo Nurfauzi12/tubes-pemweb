@@ -30,7 +30,7 @@
         <ul class="dropdown-menu bg-gray-100" aria-labelledby="tablesDropdown" >
           <li><a class="dropdown-item" href="<?= base_url('table/rencana-pembelajaran') ?>">Rencana Pembelajaran</a></li>
           <li><a class="dropdown-item" href="<?= base_url('table/nilai-kompetensi') ?>">Nilai Kompetensi</a></li>
-
+          <li><a class="dropdown-item" href="<?= base_url('table/matakuliah-syarat') ?>">Matakuliah Syarat</a></li>
         </ul>
       </li>
 
