@@ -6,7 +6,8 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Home::index');
-$routes->get('/dashboard', 'Dashboard::index'); /** routes dashboard */
+$routes->get('/dashboard', 'Dashboard::index');
+/** routes dashboard */
 
 
 // routes login dan register(sign up)
@@ -19,11 +20,11 @@ $routes->get('/logout', 'Login::logout');
 
 
 // grup routes table
-$routes->group('table', function($routes){
+$routes->group('table', function ($routes) {
 	// ============================================================
 	// MAIN TABLES
 	// ============================================================
-	
+
 	// Rencana Pembelajaran
 	$routes->get('rencana-pembelajaran', 'RencanaPembelajaran::index');
 	$routes->add('rencana-pembelajaran/new', 'RencanaPembelajaran::create');
@@ -45,10 +46,17 @@ $routes->group('table', function($routes){
 	$routes->get('matakuliah-syarat/(:segment)/delete', 'MatakuliahSyarat::delete/$1');
 	$routes->get('matakuliah-syarat/cari', 'MatakuliahSyarat::cari');
 
+	// Korelasi CPL-CPMK
+	$routes->get('korelasi-cpl-cpmk', 'KorelasiCplCpmk::index');
+	$routes->add('korelasi-cpl-cpmk/new', 'KorelasiCplCpmk::create');
+	$routes->add('korelasi-cpl-cpmk/(:segment)/edit', 'KorelasiCplCpmk::edit/$1');
+	$routes->get('korelasi-cpl-cpmk/(:segment)/delete', 'KorelasiCplCpmk::delete/$1');
+	$routes->get('korelasi-cpl-cpmk/cari', 'KorelasiCplCpmk::cari');
+
 	// ============================================================
 	// LEGACY TABLES (3B & 5 Series)
 	// ============================================================
-	
+
 	// Tabel 3b71
 	$routes->get('table3b71', 'Table3b71::index');
 	$routes->get('table3b71/(:segment)/preview', 'Table3b71::preview/$1');
@@ -110,18 +118,32 @@ $routes->group('table', function($routes){
 });
 
 // grup routes master data
-$routes->group('master', function($routes){
+$routes->group('master', function ($routes) {
 	// Master Data Penyusun
 	$routes->get('penyusun', 'Penyusun::index');
 	$routes->add('penyusun/new', 'Penyusun::create');
 	$routes->add('penyusun/(:segment)/edit', 'Penyusun::edit/$1');
 	$routes->get('penyusun/(:segment)/delete', 'Penyusun::delete/$1');
 	$routes->get('penyusun/cari', 'Penyusun::cari');
-	
+
 	// Master Data Matakuliah
 	$routes->get('matakuliah', 'MataKuliah::index');
 	$routes->add('matakuliah/new', 'MataKuliah::create');
 	$routes->add('matakuliah/(:segment)/edit', 'MataKuliah::edit/$1');
 	$routes->get('matakuliah/(:segment)/delete', 'MataKuliah::delete/$1');
 	$routes->get('matakuliah/cari', 'MataKuliah::cari');
+
+	// Master Data CPMK
+	$routes->get('cpmk', 'Cpmk::index');
+	$routes->add('cpmk/new', 'Cpmk::create');
+	$routes->add('cpmk/(:segment)/edit', 'Cpmk::edit/$1');
+	$routes->get('cpmk/(:segment)/delete', 'Cpmk::delete/$1');
+	$routes->get('cpmk/cari', 'Cpmk::cari');
+
+	// Master Data Sub-CPMK
+	$routes->get('sub-cpmk', 'SubCpmk::index');
+	$routes->add('sub-cpmk/new', 'SubCpmk::create');
+	$routes->add('sub-cpmk/(:segment)/edit', 'SubCpmk::edit/$1');
+	$routes->get('sub-cpmk/(:segment)/delete', 'SubCpmk::delete/$1');
+	$routes->get('sub-cpmk/cari', 'SubCpmk::cari');
 });
