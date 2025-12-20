@@ -12,7 +12,6 @@ class Penyusun extends Migration
             'id' => [
                 'type'           => 'INT',
                 'constraint'     => 11,
-                'unsigned'       => false,
                 'auto_increment' => true,
             ],
             'pengembangan_rps' => [

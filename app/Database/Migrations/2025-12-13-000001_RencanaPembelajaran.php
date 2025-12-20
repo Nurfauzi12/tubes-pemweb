@@ -12,7 +12,6 @@ class RencanaPembelajaran extends Migration
             'id' => [
                 'type' => 'INT',
                 'constraint' => 11,
-                'unsigned' => false,
                 'auto_increment' => true,
             ],
             'id_penyusun' => [
@@ -71,11 +70,12 @@ class RencanaPembelajaran extends Migration
         $this->forge->addKey('id_penyusun');
         $this->forge->addKey('id_matakuliah');
         $this->forge->addKey('minggu_ke');
+        
+        // Add foreign keys using Forge
+        $this->forge->addForeignKey('id_penyusun', 'penyusun', 'id', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('id_matakuliah', 'matakuliah', 'id', 'CASCADE', 'CASCADE');
+        
         $this->forge->createTable('rencana_pembelajaran', true);
-
-        // Add foreign key only to penyusun (penyusun migration exists)
-        $db = \Config\Database::connect();
-        $db->query('ALTER TABLE `rencana_pembelajaran` ADD CONSTRAINT `fk_rencana_pembelajaran_penyusun` FOREIGN KEY (`id_penyusun`) REFERENCES `penyusun`(`id`) ON DELETE CASCADE ON UPDATE CASCADE');
     }
 
     public function down()
