@@ -30,6 +30,8 @@
         <ul class="dropdown-menu bg-gray-100" aria-labelledby="tablesDropdown" >
           <li><a class="dropdown-item" href="<?= base_url('table/rencana-pembelajaran') ?>">Rencana Pembelajaran</a></li>
           <li><a class="dropdown-item" href="<?= base_url('table/nilai-kompetensi') ?>">Nilai Kompetensi</a></li>
+           <li><a class="dropdown-item" href="<?= base_url('table/sub-cpmk') ?>">Sub Cpmk</a></li>
+          
 
         </ul>
       </li>
