@@ -1,85 +1,131 @@
-<?php
-
-namespace App\Controllers;
+<?php namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\SubCpmkModel;
-use App\Models\MatakuliahModel;
 use App\Models\PenyusunModel;
+use App\Models\MatakuliahModel;
+use CodeIgniter\Exceptions\PageNotFoundException;
 
 class SubCpmk extends BaseController
 {
-    protected $subModel;
-    protected $mkModel;
-    protected $penyusunModel;
-
-    public function __construct()
-    {
-        $this->subModel       = new SubCpmkModel();
-        $this->mkModel        = new MatakuliahModel();
-        $this->penyusunModel  = new PenyusunModel();
-    }
-
+    // =====================================================
+    // INDEX
+    // =====================================================
     public function index()
     {
-        $data = [
-            'title'    => 'Data Sub-CPMK',
-            'subcpmk'  => $this->subModel->getWithRelations()
-        ];
+        $model = new SubCpmkModel();
+        $data['subcpmk'] = $model->getWithRelations();
 
-        return view('table/sub-cpmk/index', $data);
+        $penyusunModel = new PenyusunModel();
+        $matakuliahModel = new MatakuliahModel();
+
+        $data['penyusun']   = $penyusunModel->findAll();
+        $data['matakuliah'] = $matakuliahModel->findAll();
+
+        echo view('sub_cpmk/index', $data);
     }
 
+    // =====================================================
+    // CREATE
+    // =====================================================
     public function create()
     {
-        $data = [
-            'title'       => 'Tambah Sub-CPMK',
-            'matakuliah'  => $this->mkModel->findAll(),
-            'penyusun'    => $this->penyusunModel->findAll(),
-        ];
+        $penyusunModel = new PenyusunModel();
+        $matakuliahModel = new MatakuliahModel();
 
-        return view('table/sub-cpmk/create', $data);
-    }
+        $data['penyusun']   = $penyusunModel->findAll();
+        $data['matakuliah'] = $matakuliahModel->findAll();
 
-    public function store()
-    {
-        $data = $this->request->getPost();
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'id_penyusun'   => 'required|integer',
+            'id_matakuliah' => 'required|integer',
+            'sub_cpmk'      => 'required'
+        ]);
 
-        if (!$this->subModel->save($data)) {
-            return redirect()->back()->withInput()->with('errors', $this->subModel->errors());
+        $isDataValid = $validation->withRequest($this->request)->run();
+
+        if ($isDataValid) {
+            $model = new SubCpmkModel();
+            $model->insert([
+                'id_penyusun'   => $this->request->getPost('id_penyusun'),
+                'id_matakuliah' => $this->request->getPost('id_matakuliah'),
+                'sub_cpmk'      => $this->request->getPost('sub_cpmk'),
+            ]);
+
+            return redirect()->to('subcpmk');
         }
 
-        return redirect()->to('/table/sub-cpmk')->with('success', 'Data berhasil ditambahkan!');
+        echo view('sub_cpmk/create', $data);
     }
 
+    // =====================================================
+    // EDIT
+    // =====================================================
     public function edit($id)
     {
-        $data = [
-            'title'       => 'Edit Sub-CPMK',
-            'item'        => $this->subModel->find($id),
-            'matakuliah'  => $this->mkModel->findAll(),
-            'penyusun'    => $this->penyusunModel->findAll(),
-        ];
+        $model = new SubCpmkModel();
+        $data['subcpmk'] = $model->find($id);
 
-        return view('table/sub-cpmk/edit', $data);
-    }
-
-    public function update($id)
-    {
-        $data = $this->request->getPost();
-        $data['id'] = $id;
-
-        if (!$this->subModel->save($data)) {
-            return redirect()->back()->withInput()->with('errors', $this->subModel->errors());
+        if (!$data['subcpmk']) {
+            throw new PageNotFoundException('Data Sub CPMK tidak ditemukan');
         }
 
-        return redirect()->to('/table/sub-cpmk')->with('success', 'Data berhasil diperbarui!');
+        $penyusunModel = new PenyusunModel();
+        $matakuliahModel = new MatakuliahModel();
+
+        $data['penyusun']   = $penyusunModel->findAll();
+        $data['matakuliah'] = $matakuliahModel->findAll();
+
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'id_penyusun'   => 'required|integer',
+            'id_matakuliah' => 'required|integer',
+            'sub_cpmk'      => 'required'
+        ]);
+
+        $isDataValid = $validation->withRequest($this->request)->run();
+
+        if ($isDataValid) {
+            $model->update($id, [
+                'id_penyusun'   => $this->request->getPost('id_penyusun'),
+                'id_matakuliah' => $this->request->getPost('id_matakuliah'),
+                'sub_cpmk'      => $this->request->getPost('sub_cpmk'),
+            ]);
+
+            return redirect()->to('subcpmk');
+        }
+
+        echo view('sub_cpmk/edit', $data);
     }
 
+    // =====================================================
+    // DELETE
+    // =====================================================
     public function delete($id)
     {
-        $this->subModel->delete($id);
+        $model = new SubCpmkModel();
+        $model->delete($id);
 
-        return redirect()->to('/table/sub-cpmk')->with('success', 'Data berhasil dihapus!');
+        return redirect()->to('subcpmk');
+    }
+
+    // =====================================================
+    // SEARCH
+    // =====================================================
+    public function cari()
+    {
+        $q = $this->request->getGet('search');
+
+        $model = new SubCpmkModel();
+        $data['subcpmk'] = $model->cariData($q);
+
+        $penyusunModel = new PenyusunModel();
+        $matakuliahModel = new MatakuliahModel();
+
+        $data['penyusun']   = $penyusunModel->findAll();
+        $data['matakuliah'] = $matakuliahModel->findAll();
+
+        echo view('sub_cpmk/index', $data);
     }
 }

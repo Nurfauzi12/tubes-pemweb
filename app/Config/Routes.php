@@ -47,12 +47,11 @@ $routes->group('table', function ($routes) {
 	$routes->get('matakuliah-syarat/cari', 'MatakuliahSyarat::cari');
 
 	// Sub CPMK
-	$routes->get('sub-cpmk', 'SubCpmk::index');
-    $routes->get('sub-cpmk/create', 'SubCpmk::create');
-    $routes->post('sub-cpmk/store', 'SubCpmk::store');
-    $routes->get('sub-cpmk/edit/(:num)', 'SubCpmk::edit/$1');
-    $routes->post('sub-cpmk/update/(:num)', 'SubCpmk::update/$1');
-    $routes->get('sub-cpmk/delete/(:num)', 'SubCpmk::delete/$1');
+	$routes->get('subcpmk', 'SubCpmk::index');
+$routes->add('subcpmk/create', 'SubCpmk::create');
+$routes->get('subcpmk/(:segment)/edit', 'SubCpmk::edit/$1');
+$routes->get('subcpmk/(:segment)/delete', 'SubCpmk::delete/$1');
+$routes->get('subcpmk/cari', 'SubCpmk::cari');
 
 	// Korelasi CPL-CPMK
 	$routes->get('korelasi-cpl-cpmk', 'KorelasiCplCpmk::index');

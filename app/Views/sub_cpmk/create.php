@@ -11,7 +11,7 @@
 
         <div class="card-body">
 
-            <form action="<?= base_url('table/sub-cpmk/store') ?>" method="post">
+            <form action="<?= base_url('table/subcpmk/store') ?>" method="post">
 
                 <label>Penyusun</label>
                 <select name="id_penyusun" class="form-control mb-3" required>
