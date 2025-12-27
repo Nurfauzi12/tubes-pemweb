@@ -11,13 +11,13 @@
 
         <div class="card-body">
 
-            <form action="<?= base_url('table/sub-cpmk/update/'.$sub['id']) ?>" method="post">
+            <form action="<?= base_url('table/subcpmk/edit/'.$subcpmk['id']) ?>" method="post">
 
                 <label>Penyusun</label>
                 <select name="id_penyusun" class="form-control mb-3" required>
                     <?php foreach ($penyusun as $p): ?>
                         <option value="<?= $p['id'] ?>"
-                            <?= $sub['id_penyusun'] == $p['id'] ? 'selected' : '' ?>>
+                            <?= $subcpmk['id_penyusun'] == $p['id'] ? 'selected' : '' ?>>
                             <?= esc($p['pengembangan_rps']) ?>
                         </option>
                     <?php endforeach ?>
@@ -27,14 +27,14 @@
                 <select name="id_matakuliah" class="form-control mb-3" required>
                     <?php foreach ($matakuliah as $m): ?>
                         <option value="<?= $m['id'] ?>"
-                            <?= $sub['id_matakuliah'] == $m['id'] ? 'selected' : '' ?>>
+                            <?= $subcpmk['id_matakuliah'] == $m['id'] ? 'selected' : '' ?>>
                             <?= esc($m['matakuliah']) ?>
                         </option>
                     <?php endforeach ?>
                 </select>
 
                 <label>Sub CPMK</label>
-                <textarea name="sub_cpmk" class="form-control mb-3" rows="3" required><?= esc($sub['sub_cpmk']) ?></textarea>
+                <textarea name="sub_cpmk" class="form-control mb-3" rows="3" required><?= esc($subcpmk['sub_cpmk']) ?></textarea>
 
                 <button type="submit" class="btn btn-primary w-100">Update</button>
             </form>

@@ -24,7 +24,7 @@ class SubCpmkModel extends Model
     protected $validationRules = [
         'id_penyusun'   => 'required|integer',
         'id_matakuliah' => 'required|integer',
-        'sub_cpmk'      => 'required|string'
+        'sub_cpmk'      => 'required|string',
     ];
 
     /**

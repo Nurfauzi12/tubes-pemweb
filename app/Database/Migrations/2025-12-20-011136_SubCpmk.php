@@ -8,41 +8,49 @@ class SubCpmk extends Migration
 {
     public function up()
     {
-         $this->forge->addField([
+        $this->forge->addField([
             'id' => [
                 'type'           => 'INT',
                 'constraint'     => 11,
-                'unsigned'       => false,
+                'unsigned'       => true,
                 'auto_increment' => true,
             ],
             'id_penyusun' => [
-                'type' => 'VARCHAR',
-                'constraint' => '20',
-                'null' => false,
+                'type'       => 'INT',
+                'constraint' => 11,
+                //'unsigned'   => true,
+                'null'       => false,
             ],
             'id_matakuliah' => [
-                'type' => 'INT',
+                'type'       => 'INT',
                 'constraint' => 11,
+                //'unsigned'   => true,
+                'null'       => false,
+            ],
+            'sub_cpmk' => [
+                'type' => 'TEXT',
                 'null' => false,
             ],
-            'id_sub_cpmk' => [
-                'type' => 'VARCHAR',
-                'constraint' => 50,
-                'null' => false,
-            ],
-
         ]);
-        // create primary key
+
         $this->forge->addKey('id', true);
         $this->forge->addKey('id_penyusun');
         $this->forge->addKey('id_matakuliah');
-        $this->forge->addKey('id_sub_cpmk');
 
-        // create table first before adding foreign keys
-        $this->forge->createTable('sub_cmpk', true);
+        $this->forge->addForeignKey(
+            'id_penyusun', 'penyusun', 'id', 'CASCADE', 'CASCADE'
+        );
+        $this->forge->addForeignKey(
+            'id_matakuliah', 'matakuliah', 'id', 'CASCADE', 'CASCADE'
+        );
+
+        $this->forge->createTable('sub_cpmk', true, [
+            'ENGINE' => 'InnoDB'
+        ]);
     }
+
     public function down()
     {
-        $this->forge->dropTable('sub_cpmk');
+        $this->forge->dropTable('sub_cpmk', true);
     }
 }

@@ -48,10 +48,13 @@ $routes->group('table', function ($routes) {
 
 	// Sub CPMK
 	$routes->get('subcpmk', 'SubCpmk::index');
-$routes->add('subcpmk/create', 'SubCpmk::create');
-$routes->get('subcpmk/(:segment)/edit', 'SubCpmk::edit/$1');
-$routes->get('subcpmk/(:segment)/delete', 'SubCpmk::delete/$1');
-$routes->get('subcpmk/cari', 'SubCpmk::cari');
+	$routes->add('subcpmk/create', 'SubCpmk::create');
+	$routes->post('subcpmk/store', 'SubCpmk::store');
+	$routes->get('subcpmk/cari', 'SubCpmk::cari');
+	$routes->get('subcpmk/edit/(:segment)', 'SubCpmk::edit/$1');
+	$routes->post('subcpmk/update', 'SubCpmk::update');
+	$routes->get('subcpmk/delete/(:segment)', 'SubCpmk::delete/$1');
+	
 
 	// Korelasi CPL-CPMK
 	$routes->get('korelasi-cpl-cpmk', 'KorelasiCplCpmk::index');
