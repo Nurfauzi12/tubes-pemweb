@@ -64,3 +64,5 @@ class Matakuliah extends Migration
         $this->forge->dropTable('matakuliah');
     }
 }
+
+

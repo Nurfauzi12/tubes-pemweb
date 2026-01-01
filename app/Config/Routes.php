@@ -46,6 +46,16 @@ $routes->group('table', function ($routes) {
 	$routes->get('matakuliah-syarat/(:segment)/delete', 'MatakuliahSyarat::delete/$1');
 	$routes->get('matakuliah-syarat/cari', 'MatakuliahSyarat::cari');
 
+	// CPMK (alias ke Master CPMK)
+    $routes->get('cpmk', 'CpmkController::index');
+    $routes->get('cpmk/cari', 'CpmkController::cari');
+	$routes->get('cpmk/new', 'CpmkController::create');
+    $routes->post('cpmk/new', 'CpmkController::create');
+    $routes->get('cpmk/(:num)/edit', 'CpmkController::edit/$1');
+    $routes->post('cpmk/(:num)/edit', 'CpmkController::edit/$1');
+    $routes->get('cpmk/(:num)/delete', 'CpmkController::delete/$1');
+
+
 	// Korelasi CPL-CPMK
 	$routes->get('korelasi-cpl-cpmk', 'KorelasiCplCpmk::index');
 	$routes->add('korelasi-cpl-cpmk/new', 'KorelasiCplCpmk::create');
@@ -134,11 +144,13 @@ $routes->group('master', function ($routes) {
 	$routes->get('matakuliah/cari', 'MataKuliah::cari');
 
 	// Master Data CPMK
-	$routes->get('cpmk', 'Cpmk::index');
-	$routes->add('cpmk/new', 'Cpmk::create');
-	$routes->add('cpmk/(:segment)/edit', 'Cpmk::edit/$1');
-	$routes->get('cpmk/(:segment)/delete', 'Cpmk::delete/$1');
-	$routes->get('cpmk/cari', 'Cpmk::cari');
+    $routes->get('cpmk', 'CpmkController::index');
+    $routes->get('cpmk/cari', 'CpmkController::cari');
+	$routes->get('cpmk/new', 'CpmkController::create');
+    $routes->post('cpmk/new', 'CpmkController::create');
+    $routes->get('cpmk/(:num)/edit', 'CpmkController::edit/$1');
+    $routes->post('cpmk/(:num)/edit', 'CpmkController::edit/$1');
+    $routes->get('cpmk/(:num)/delete', 'CpmkController::delete/$1');
 
 	// Master Data Sub-CPMK
 	$routes->get('sub-cpmk', 'SubCpmk::index');
