@@ -10,57 +10,70 @@ class KorelasiCplCpmk extends Migration
     {
         $this->forge->addField([
             'id' => [
-                'type' => 'INT',
-                'constraint' => 11,
-                'unsigned' => true,
+                'type'           => 'INT',
+                'constraint'     => 11,
+                'unsigned'       => true,
                 'auto_increment' => true,
             ],
             'id_penyusun' => [
-                'type' => 'INT',
+                'type'       => 'INT',
                 'constraint' => 11,
-                'unsigned' => true,
-                'null' => false,
+                'unsigned'   => true,
             ],
             'id_matakuliah' => [
-                'type' => 'INT',
+                'type'       => 'INT',
                 'constraint' => 11,
-                'unsigned' => true,
-                'null' => false,
+                'unsigned'   => true,
             ],
             'id_sub_cpmk' => [
-                'type' => 'INT',
+                'type'       => 'INT',
                 'constraint' => 11,
-                'unsigned' => true,
-                'null' => false,
+                'unsigned'   => true,
             ],
             'id_cpmk' => [
-                'type' => 'INT',
+                'type'       => 'INT',
                 'constraint' => 11,
-                'unsigned' => true,
-                'null' => false,
+                'unsigned'   => true,
             ],
             'presentase' => [
-                'type' => 'INT',
+                'type'       => 'INT',
                 'constraint' => 11,
-                'null' => false,
             ],
             'bobot_penilaian' => [
-                'type' => 'INT',
+                'type'       => 'INT',
                 'constraint' => 11,
-                'null' => false,
             ],
         ]);
 
         $this->forge->addKey('id', true);
         $this->forge->addKey('id_penyusun');
         $this->forge->addKey('id_matakuliah');
+        $this->forge->addKey('id_sub_cpmk');
         $this->forge->addKey('id_cpmk');
 
-        $this->forge->addForeignKey('id_penyusun', 'penyusun', 'id', 'CASCADE', 'CASCADE');
-        $this->forge->addForeignKey('id_matakuliah', 'matakuliah', 'id', 'CASCADE', 'CASCADE');
-        $this->forge->addForeignKey('id_cpmk', 'cpmk', 'id', 'CASCADE', 'CASCADE');
+        // Buat tabel dulu tanpa FK
+        $this->forge->createTable('korelasi_cpl_cpmk', true, [
+            'ENGINE' => 'InnoDB',
+            'DEFAULT CHARACTER SET' => 'utf8',
+            'COLLATE' => 'utf8_general_ci',
+        ]);
 
-        $this->forge->createTable('korelasi_cpl_cpmk');
+        // Tambahkan FK manual agar aman
+        $this->db->query("
+            ALTER TABLE korelasi_cpl_cpmk
+            ADD CONSTRAINT fk_korelasi_penyusun
+                FOREIGN KEY (id_penyusun) REFERENCES penyusun(id)
+                ON DELETE CASCADE ON UPDATE CASCADE,
+            ADD CONSTRAINT fk_korelasi_matakuliah
+                FOREIGN KEY (id_matakuliah) REFERENCES matakuliah(id)
+                ON DELETE CASCADE ON UPDATE CASCADE,
+            ADD CONSTRAINT fk_korelasi_sub_cpmk
+                FOREIGN KEY (id_sub_cpmk) REFERENCES sub_cpmk(id)
+                ON DELETE CASCADE ON UPDATE CASCADE,
+            ADD CONSTRAINT fk_korelasi_cpmk
+                FOREIGN KEY (id_cpmk) REFERENCES cpmk(id)
+                ON DELETE CASCADE ON UPDATE CASCADE
+        ");
     }
 
     public function down()

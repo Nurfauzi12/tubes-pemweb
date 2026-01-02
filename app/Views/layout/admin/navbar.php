@@ -31,7 +31,11 @@
           <li><a class="dropdown-item" href="<?= base_url('table/rencana-pembelajaran') ?>">Rencana Pembelajaran</a></li>
           <li><a class="dropdown-item" href="<?= base_url('table/nilai-kompetensi') ?>">Nilai Kompetensi</a></li>
           <li><a class="dropdown-item" href="<?= base_url('table/matakuliah-syarat') ?>">Matakuliah Syarat</a></li>
+<<<<<<< HEAD
           <li><a class="dropdown-item" href="<?= base_url('table/subcpmk') ?>">Sub CPMK</a></li>
+=======
+          <li><a class="dropdown-item" href="<?= base_url('table/cpmk') ?>">CPMK</a></li>
+>>>>>>> da8b327cc5fe259d764d8999db08e01721449ff1
           <li><a class="dropdown-item" href="<?= base_url('table/korelasi-cpl-cpmk') ?>">Korelasi CPL CPMK</a></li>
         </ul>
       </li>
