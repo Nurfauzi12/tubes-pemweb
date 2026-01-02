@@ -45,11 +45,11 @@ class CreateCpmkTable extends Migration
         $this->db->query("
             ALTER TABLE cpmk
             ADD CONSTRAINT fk_cpmk_penyusun
-                FOREIGN KEY (id_penyusun) REFERENCES penyusun(id)
-                ON DELETE CASCADE ON UPDATE CASCADE,
+            FOREIGN KEY (id_penyusun) REFERENCES penyusun(id)
+            ON DELETE CASCADE ON UPDATE CASCADE,
             ADD CONSTRAINT fk_cpmk_matakuliah
-                FOREIGN KEY (id_matakuliah) REFERENCES matakuliah(id)
-                ON DELETE CASCADE ON UPDATE CASCADE
+            FOREIGN KEY (id_matakuliah) REFERENCES matakuliah(id)
+            ON DELETE CASCADE ON UPDATE CASCADE
         ");
     }
 

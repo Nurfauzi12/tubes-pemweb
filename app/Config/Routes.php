@@ -46,6 +46,15 @@ $routes->group('table', function ($routes) {
 	$routes->get('matakuliah-syarat/(:segment)/delete', 'MatakuliahSyarat::delete/$1');
 	$routes->get('matakuliah-syarat/cari', 'MatakuliahSyarat::cari');
 
+	// Sub CPMK
+	$routes->get('subcpmk', 'SubCpmk::index');
+	$routes->add('subcpmk/create', 'SubCpmk::create');
+	$routes->post('subcpmk/store', 'SubCpmk::store');
+	$routes->get('subcpmk/cari', 'SubCpmk::cari');
+	$routes->get('subcpmk/edit/(:segment)', 'SubCpmk::edit/$1');
+	$routes->post('subcpmk/update', 'SubCpmk::update');
+	$routes->get('subcpmk/delete/(:segment)', 'SubCpmk::delete/$1');
+	
 	// CPMK (alias ke Master CPMK)
     $routes->get('cpmk', 'CpmkController::index');
     $routes->get('cpmk/cari', 'CpmkController::cari');
