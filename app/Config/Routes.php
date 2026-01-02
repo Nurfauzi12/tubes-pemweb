@@ -158,4 +158,12 @@ $routes->group('master', function ($routes) {
 	$routes->add('sub-cpmk/(:segment)/edit', 'SubCpmk::edit/$1');
 	$routes->get('sub-cpmk/(:segment)/delete', 'SubCpmk::delete/$1');
 	$routes->get('sub-cpmk/cari', 'SubCpmk::cari');
+
+	// Master Data CPL
+	$routes->get('cpl', 'CplController::index');
+	$routes->add('cpl/new', 'CplController::create');
+	$routes->add('cpl/(:segment)/edit', 'CplController::edit/$1');
+	$routes->get('cpl/(:segment)/delete', 'CplController::delete/$1');
+	$routes->get('cpl/cari', 'CplController::cari');
+
 });
