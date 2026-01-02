@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class SubCpmkTable extends Migration
+class SubCpmk extends Migration
 {
     public function up()
     {
@@ -12,18 +12,20 @@ class SubCpmkTable extends Migration
             'id' => [
                 'type'           => 'INT',
                 'constraint'     => 11,
-                'unsigned'       => true, // wajib UNSIGNED
+                'unsigned'       => true,
                 'auto_increment' => true,
             ],
             'id_penyusun' => [
                 'type'       => 'INT',
                 'constraint' => 11,
-                'unsigned'   => true, // wajib UNSIGNED
+                'unsigned'   => true,
+                'null'       => false,
             ],
             'id_matakuliah' => [
                 'type'       => 'INT',
                 'constraint' => 11,
-                'unsigned'   => true, // wajib UNSIGNED
+                'unsigned'   => true,
+                'null'       => false,
             ],
             'sub_cpmk' => [
                 'type' => 'TEXT',
@@ -35,22 +37,16 @@ class SubCpmkTable extends Migration
         $this->forge->addKey('id_penyusun');
         $this->forge->addKey('id_matakuliah');
 
-        $this->forge->createTable('sub_cpmk', true, [
-            'ENGINE' => 'InnoDB',
-            'DEFAULT CHARACTER SET' => 'utf8',
-            'COLLATE' => 'utf8_general_ci',
-        ]);
+        $this->forge->addForeignKey(
+            'id_penyusun', 'penyusun', 'id', 'CASCADE', 'CASCADE'
+        );
+        $this->forge->addForeignKey(
+            'id_matakuliah', 'matakuliah', 'id', 'CASCADE', 'CASCADE'
+        );
 
-        // Foreign key manual
-        $this->db->query("
-            ALTER TABLE sub_cpmk
-            ADD CONSTRAINT fk_sub_penyusun
-                FOREIGN KEY (id_penyusun) REFERENCES penyusun(id)
-                ON DELETE CASCADE ON UPDATE CASCADE,
-            ADD CONSTRAINT fk_sub_matakuliah
-                FOREIGN KEY (id_matakuliah) REFERENCES matakuliah(id)
-                ON DELETE CASCADE ON UPDATE CASCADE
-        ");
+        $this->forge->createTable('sub_cpmk', true, [
+            'ENGINE' => 'InnoDB'
+        ]);
     }
 
     public function down()
