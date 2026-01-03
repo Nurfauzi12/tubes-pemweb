@@ -168,7 +168,11 @@
                                   </div>
                                   <label>Bentuk Pembelajaran</label>
                                   <div class="input-group mb-3">
-                                    <input type="text" class="form-control" name="bentuk_pembelajaran" placeholder="Bentuk Pembelajaran" required>
+                                    <select name="bentuk_pembelajaran" class="form-control" required>
+                                      <option value="">Pilih Bentuk Pembelajaran</option>
+                                      <option value="luring">Luring</option>
+                                      <option value="daring">Daring</option>
+                                    </select>
                                   </div>
                                   <label>Materi</label>
                                   <div class="input-group mb-3">
