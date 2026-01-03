@@ -13,7 +13,7 @@
             </li>
             <li class="breadcrumb-item text-sm text-white active" aria-current="page">CPMK</li>
           </ol>
-          <h3 class="font-weight-bolder text-white mb-0">Master Data CPMK</h3>
+          <h3 class="font-weight-bolder text-white mb-0">Data CPMK</h3>
         </nav>
 
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
@@ -76,51 +76,59 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <?php if (empty($cpmk)): ?>
-                      <tr>
-                        <td colspan="5" class="text-center py-4 text-secondary">
-                          Tidak ada data
-                        </td>
-                      </tr>
-                    <?php else: ?>
-                      <?php $no = 1; foreach ($cpmk as $item): ?>
-                        <tr>
-                          <td class="text-center"><?= $no++ ?></td>
+                      <?php if (empty($cpmk)): ?>
+                          <tr>
+                              <td colspan="5" class="text-center py-4">
+                                  <p class="text-sm text-secondary mb-0">Tidak ada data</p>
+                              </td>
+                          </tr>
+                      <?php else: ?>
+                          <?php $no = 1; foreach ($cpmk as $item): ?>
+                              <tr>
+                                  <td class="text-center">
+                                      <p class="mb-0 text-sm"><?= $no++ ?></p>
+                                  </td>
 
-                          <td class="ps-4">
-                            <h6 class="mb-0 text-sm">
-                              <?= esc($penyusun_map[$item['id_penyusun']]['pengembangan_rps'] ?? '-') ?>
-                            </h6>
-                          </td>
+                                  <td class="ps-4">
+                                      <div class="d-flex flex-column justify-content-center">
+                                          <h6 class="mb-0 text-sm">
+                                              <?= esc($item['nama_penyusun'] ?? '-') ?>
+                                          </h6>
+                                      </div>
+                                  </td>
 
-                          <td>
-                            <p class="text-sm mb-0">
-                              <?= esc($matakuliah_map[$item['id_matakuliah']]['matakuliah'] ?? '-') ?>
-                            </p>
-                            <p class="text-xs text-secondary mb-0">
-                              <?= esc($matakuliah_map[$item['id_matakuliah']]['kode'] ?? '') ?>
-                            </p>
-                          </td>
+                                  <td>
+                                      <div class="d-flex flex-column justify-content-center">
+                                          <p class="text-sm font-weight-bold mb-0">
+                                              <?= esc($item['nama_matkul'] ?? '-') ?>
+                                          </p>
+                                          <p class="text-xs text-secondary mb-0">
+                                              <?= esc($item['kode_matkul'] ?? '-') ?>
+                                          </p>
+                                      </div>
+                                  </td>
 
-                          <td class="text-center">
-                            <?= esc($item['cpmk']) ?>
-                          </td>
+                                  <td class="text-center">
+                                      <p class="text-sm mb-0"><?= esc($item['cpmk']) ?></p>
+                                  </td>
 
-                          <td class="text-center">
-                            <a href="<?= base_url('master/cpmk/'.$item['id'].'/edit') ?>" class="btn btn-sm bg-gradient-info">
-                              <i class="fas fa-edit"></i>
-                            </a>
-                            <a href="#" data-href="<?= base_url('master/cpmk/'.$item['id'].'/delete') ?>"
-                               onclick="confirmToDelete(this)"
-                               data-bs-toggle="modal"
-                               data-bs-target="#confirm-dialog"
-                               class="btn btn-sm bg-gradient-danger">
-                              <i class="fas fa-trash"></i>
-                            </a>
-                          </td>
-                        </tr>
-                      <?php endforeach ?>
-                    <?php endif ?>
+                                  <td class="text-center">
+                                      <a href="<?= base_url('master/cpmk/'.$item['id'].'/edit') ?>" 
+                                        class="btn btn-sm bg-gradient-info mb-0">
+                                          <i class="fas fa-edit"></i> Edit
+                                      </a>
+                                      <a href="javascript:;" 
+                                        data-href="<?= base_url('master/cpmk/'.$item['id'].'/delete') ?>"
+                                        onclick="confirmToDelete(this)"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#confirm-dialog"
+                                        class="btn btn-sm bg-gradient-danger mb-0">
+                                          <i class="fas fa-trash"></i> Hapus
+                                      </a>
+                                  </td>
+                              </tr>
+                          <?php endforeach ?>
+                      <?php endif ?>
                   </tbody>
                 </table>
               </div>
