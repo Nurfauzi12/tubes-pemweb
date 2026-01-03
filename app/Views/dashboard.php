@@ -65,8 +65,8 @@
                   <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
                     <i class="ni ni-camera-compact text-dark opacity-10"></i>
                   </div>
-                  <h5 class="text-white mb-1">Tugas Besar Web Kelompok 2</h5>
-                  <p>Anggita Aulia</p>
+                  <h5 class="text-white mb-1">Tugas Besar Web Kelompok 1</h5>
+                    <p>M Fajar Nurfauzi, Rafi Khoirulloh, Ghania Fazila, Bisma Wirajovi</p>
                 </div>
               </div>
               <div class="carousel-item h-100" style="background-image: url('img/carousel-2.jpg'); background-size: cover;">

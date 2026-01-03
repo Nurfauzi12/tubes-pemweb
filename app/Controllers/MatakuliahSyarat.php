@@ -48,7 +48,7 @@ class MatakuliahSyarat extends BaseController
                 ]);
 
                 session()->setFlashdata('success', 'Data mata kuliah syarat berhasil ditambahkan');
-                return redirect()->to(base_url('master/matakuliah-syarat'));
+                return redirect()->to(base_url('table/matakuliah-syarat'));
             } else {
                 $data['validation'] = $validation;
             }
@@ -85,7 +85,7 @@ class MatakuliahSyarat extends BaseController
                 ]);
 
                 session()->setFlashdata('success', 'Data mata kuliah syarat berhasil diupdate');
-                return redirect()->to(base_url('master/matakuliah-syarat'));
+                return redirect()->to(base_url('table/matakuliah-syarat'));
             } else {
                 $data['validation'] = $validation;
             }
@@ -105,12 +105,12 @@ class MatakuliahSyarat extends BaseController
 
         if (!$item) {
             session()->setFlashdata('error', 'Data matakuliah syarat tidak ditemukan');
-            return redirect()->to(base_url('master/matakuliah-syarat'));
+            return redirect()->to(base_url('table/matakuliah-syarat'));
         }
 
         $model->delete($id);
         session()->setFlashdata('success', 'Data matakuliah syarat berhasil dihapus');
-        return redirect()->to(base_url('master/matakuliah-syarat'));
+        return redirect()->to(base_url('table/matakuliah-syarat'));
     }
 
     public function cari()

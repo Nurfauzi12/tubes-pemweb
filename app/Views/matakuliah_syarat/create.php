@@ -9,7 +9,7 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Master Data</a></li>
-            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="<?= base_url('master/matakuliah-syarat') ?>">Mata Kuliah Syarat</a></li>
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="<?= base_url('table/matakuliah-syarat') ?>">Mata Kuliah Syarat</a></li>
             <li class="breadcrumb-item text-sm text-white active" aria-current="page">Tambah</li>
           </ol>
           <h3 class="font-weight-bolder text-white mb-0">Tambah Mata Kuliah Syarat</h3>
@@ -41,7 +41,7 @@
                 </div>
               <?php endif; ?>
 
-              <form action="<?= base_url('master/matakuliah-syarat/new') ?>" method="post" id="formMkSyarat">
+              <form action="<?= base_url('table/matakuliah-syarat/new') ?>" method="post" id="formMkSyarat">
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group mb-4">
@@ -82,7 +82,7 @@
 
                 <div class="row mt-4">
                   <div class="col-12 d-flex justify-content-end gap-2">
-                    <a href="<?= base_url('master/matakuliah-syarat') ?>" class="btn btn-outline-secondary">Kembali</a>
+                    <a href="<?= base_url('table/matakuliah-syarat') ?>" class="btn btn-outline-secondary">Kembali</a>
                     <button type="reset" class="btn btn-outline-warning">Reset</button>
                     <button type="submit" class="btn bg-gradient-primary">Simpan Data</button>
                   </div>

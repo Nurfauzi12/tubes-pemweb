@@ -16,7 +16,7 @@
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
             <div class="input-group">
-              <form action="<?= base_url('master/matakuliah-syarat/cari') ?>" method="GET" id="searchForm">
+              <form action="<?= base_url('table/matakuliah-syarat/cari') ?>" method="GET" id="searchForm">
                 <span class="input-group-text text-body">
                   <input type="search" id="searchInput" name="search" placeholder="Cari mata kuliah syarat..." />
                   <i class="fas fa-search" aria-hidden="true"></i>
@@ -63,7 +63,7 @@
               <?php endif; ?>
 
               <!-- Button Tambah Data -->
-              <a href="<?= base_url('master/matakuliah-syarat/new') ?>" class="btn bg-gradient-success btn-block mb-3 mt-3">
+              <a href="<?= base_url('table/matakuliah-syarat/new') ?>" class="btn bg-gradient-success btn-block mb-3 mt-3">
                 <i class="fas fa-plus me-2"></i>Tambah Mata Kuliah Syarat
               </a>
             </div>
@@ -108,7 +108,7 @@
                             <p class="text-sm font-weight-normal mb-0"><?= esc($penyusun_map[$item['id_penyusun']]['pengembangan_rps'] ?? '-') ?></p>
                           </td>
                           <td class="text-center">
-                            <a href="<?= base_url('master/matakuliah-syarat/'.$item['id'].'/edit') ?>" 
+                            <a href="<?= base_url('table/matakuliah-syarat/'.$item['id'].'/edit') ?>" 
                                class="btn btn-sm bg-gradient-info mb-0 me-2" 
                                data-bs-toggle="tooltip" 
                                data-bs-placement="top" 
@@ -116,7 +116,7 @@
                               <i class="fas fa-pencil-alt me-1"></i>Edit
                             </a>
                             <a href="#" 
-                               data-href="<?= base_url('master/matakuliah-syarat/' . $item['id'] . '/delete') ?>" 
+                               data-href="<?= base_url('table/matakuliah-syarat/' . $item['id'] . '/delete') ?>" 
                                onclick="confirmToDelete(this)" 
                                class="btn btn-sm bg-gradient-danger mb-0" 
                                data-bs-toggle="modal" 
