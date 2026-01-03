@@ -11,8 +11,13 @@ class RencanaPembelajaran extends BaseController
     {
         $model = new RencanaPembelajaranModel();
         $data['rencana_pembelajaran'] = $model->findAll();
-        // $data['penyusun'] = $this->db->table('penyusun')->findAll();
-        // $data['matakuliah'] = $this->db->table('matakuliah')->findAll();
+
+        // Load data untuk dropdown
+        $penyusunModel = new PenyusunModel();
+        $matakuliahModel = new MatakuliahModel();
+        $data['penyusun'] = $penyusunModel->findAll();
+        $data['matakuliah'] = $matakuliahModel->findAll();
+        
         echo view('rencana_pembelajaran/index', $data);
     }
 
