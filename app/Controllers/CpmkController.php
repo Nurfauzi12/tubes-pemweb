@@ -24,13 +24,19 @@ class CpmkController extends BaseController
      * Index
      * =============================== */
     public function index()
-    {
-        $data['cpmk'] = $this->cpmkModel->findAll();
-        $data['penyusun'] = $this->penyusunModel->findAll();
-        $data['matakuliah'] = $this->matakuliahModel->findAll();
+{
+    $data['cpmk'] = $this->cpmkModel->select('
+            cpmk.*, 
+            matakuliah.matakuliah as nama_matkul, 
+            matakuliah.kode as kode_matkul, 
+            penyusun.pengembangan_rps as nama_penyusun
+        ')
+        ->join('matakuliah', 'matakuliah.id = cpmk.id_matakuliah', 'left')
+        ->join('penyusun', 'penyusun.id = cpmk.id_penyusun', 'left')
+        ->findAll();
 
-        return view('cpmk/index', $data);
-    }
+    return view('cpmk/index', $data);
+}
 
     /* ===============================
      * Create
@@ -59,10 +65,11 @@ class CpmkController extends BaseController
             }
         }
 
-        $data['penyusun']   = $this->penyusunModel->findAll();
-        $data['matakuliah'] = $this->matakuliahModel->findAll();
+        // PERBAIKAN DI SINI: Samakan nama key dengan yang ada di View
+        $data['penyusun_list']   = $this->penyusunModel->findAll();
+        $data['matakuliah_list'] = $this->matakuliahModel->findAll();
 
-        return view('cpmk/create', $data ?? []);
+        return view('cpmk/create', $data); // Pastikan view path sudah benar
     }
 
     /* ===============================
@@ -125,13 +132,24 @@ class CpmkController extends BaseController
     {
         $keyword = $this->request->getGet('search');
 
-        $data['cpmk'] = $keyword
-            ? $this->cpmkModel->like('cpmk', $keyword)->findAll()
-            : $this->cpmkModel->findAll();
+        // Buat query builder dengan Join yang sama seperti di fungsi index
+        $builder = $this->cpmkModel->select('
+                cpmk.*, 
+                matakuliah.matakuliah as nama_matkul, 
+                matakuliah.kode as kode_matkul, 
+                penyusun.pengembangan_rps as nama_penyusun
+            ')
+            ->join('matakuliah', 'matakuliah.id = cpmk.id_matakuliah', 'left')
+            ->join('penyusun', 'penyusun.id = cpmk.id_penyusun', 'left');
 
-        $data['penyusun']   = $this->penyusunModel->findAll();
-        $data['matakuliah'] = $this->matakuliahModel->findAll();
+        if ($keyword) {
+            // Mencari berdasarkan isi teks CPMK
+            $builder->like('cpmk.cpmk', $keyword);
+        }
 
+        $data['cpmk'] = $builder->findAll();
+
+        // Pastikan view path sesuai (biasanya 'master/cpmk/index' atau 'cpmk/index')
         return view('cpmk/index', $data);
     }
 }

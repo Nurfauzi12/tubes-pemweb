@@ -29,8 +29,16 @@ class CpmkModel extends Model
             ->getResultArray();
     }
 
-    public function cariData($q)
-    {
-        return $this->like('cpmk', $q)->findAll();
+    public function getJoinedData($keyword = null)
+{
+    $builder = $this->select('cpmk.*, matakuliah.matakuliah as nama_matkul, matakuliah.kode as kode_matkul, penyusun.pengembangan_rps as nama_penyusun')
+        ->join('matakuliah', 'matakuliah.id = cpmk.id_matakuliah', 'left')
+        ->join('penyusun', 'penyusun.id = cpmk.id_penyusun', 'left');
+
+    if ($keyword) {
+        $builder->like('cpmk.cpmk', $keyword);
     }
+
+    return $builder->findAll();
+}
 }
