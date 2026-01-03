@@ -12,18 +12,17 @@ class CreateCpmkTable extends Migration
             'id' => [
                 'type'           => 'INT',
                 'constraint'     => 11,
-                'unsigned'       => true, // wajib UNSIGNED
                 'auto_increment' => true,
             ],
             'id_penyusun' => [
                 'type'       => 'INT',
                 'constraint' => 11,
-                'unsigned'   => true, // wajib UNSIGNED
+                'null' => false,
             ],
             'id_matakuliah' => [
                 'type'       => 'INT',
                 'constraint' => 11,
-                'unsigned'   => true, // wajib UNSIGNED
+                'null' => false,
             ],
             'cpmk' => [
                 'type' => 'TEXT',
@@ -35,22 +34,11 @@ class CreateCpmkTable extends Migration
         $this->forge->addKey('id_penyusun');
         $this->forge->addKey('id_matakuliah');
 
-        $this->forge->createTable('cpmk', true, [
-            'ENGINE' => 'InnoDB',
-            'DEFAULT CHARACTER SET' => 'utf8',
-            'COLLATE' => 'utf8_general_ci',
-        ]);
+        // Add foreign keys using Forge
+        $this->forge->addForeignKey('id_penyusun', 'penyusun', 'id', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('id_matakuliah', 'matakuliah', 'id', 'CASCADE', 'CASCADE');
 
-        // Foreign key manual via query (lebih aman)
-        $this->db->query("
-            ALTER TABLE cpmk
-            ADD CONSTRAINT fk_cpmk_penyusun
-            FOREIGN KEY (id_penyusun) REFERENCES penyusun(id)
-            ON DELETE CASCADE ON UPDATE CASCADE,
-            ADD CONSTRAINT fk_cpmk_matakuliah
-            FOREIGN KEY (id_matakuliah) REFERENCES matakuliah(id)
-            ON DELETE CASCADE ON UPDATE CASCADE
-        ");
+        $this->forge->createTable('cpmk', true);
     }
 
     public function down()

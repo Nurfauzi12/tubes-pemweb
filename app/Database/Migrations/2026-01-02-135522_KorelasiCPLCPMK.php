@@ -12,31 +12,26 @@ class KorelasiCplCpmk extends Migration
             'id' => [
                 'type' => 'INT',
                 'constraint' => 11,
-                'unsigned' => true,
                 'auto_increment' => true,
             ],
             'id_penyusun' => [
                 'type' => 'INT',
                 'constraint' => 11,
-                'unsigned' => true,
                 'null' => false,
             ],
             'id_matakuliah' => [
                 'type' => 'INT',
                 'constraint' => 11,
-                'unsigned' => true,
                 'null' => false,
             ],
             'id_sub_cpmk' => [
                 'type' => 'INT',
                 'constraint' => 11,
-                'unsigned' => true,
                 'null' => false,
             ],
             'id_cpmk' => [
                 'type' => 'INT',
                 'constraint' => 11,
-                'unsigned' => true,
                 'null' => false,
             ],
             'presentase' => [
@@ -56,6 +51,7 @@ class KorelasiCplCpmk extends Migration
         $this->forge->addKey('id_matakuliah');
         $this->forge->addKey('id_cpmk');
 
+        // Add foreign keys using Forge
         $this->forge->addForeignKey('id_penyusun', 'penyusun', 'id', 'CASCADE', 'CASCADE');
         $this->forge->addForeignKey('id_matakuliah', 'matakuliah', 'id', 'CASCADE', 'CASCADE');
         $this->forge->addForeignKey('id_cpmk', 'cpmk', 'id', 'CASCADE', 'CASCADE');

@@ -12,19 +12,16 @@ class SubCpmk extends Migration
             'id' => [
                 'type'           => 'INT',
                 'constraint'     => 11,
-                'unsigned'       => true,
                 'auto_increment' => true,
             ],
             'id_penyusun' => [
                 'type'       => 'INT',
                 'constraint' => 11,
-                'unsigned'   => true,
                 'null'       => false,
             ],
             'id_matakuliah' => [
                 'type'       => 'INT',
                 'constraint' => 11,
-                'unsigned'   => true,
                 'null'       => false,
             ],
             'sub_cpmk' => [
@@ -37,16 +34,11 @@ class SubCpmk extends Migration
         $this->forge->addKey('id_penyusun');
         $this->forge->addKey('id_matakuliah');
 
-        $this->forge->addForeignKey(
-            'id_penyusun', 'penyusun', 'id', 'CASCADE', 'CASCADE'
-        );
-        $this->forge->addForeignKey(
-            'id_matakuliah', 'matakuliah', 'id', 'CASCADE', 'CASCADE'
-        );
+        // Add foreign keys using Forge
+        $this->forge->addForeignKey('id_penyusun', 'penyusun', 'id', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('id_matakuliah', 'matakuliah', 'id', 'CASCADE', 'CASCADE');
 
-        $this->forge->createTable('sub_cpmk', true, [
-            'ENGINE' => 'InnoDB'
-        ]);
+        $this->forge->createTable('sub_cpmk', true);
     }
 
     public function down()
