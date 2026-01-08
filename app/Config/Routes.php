@@ -169,10 +169,21 @@ $routes->group('master', function ($routes) {
 	$routes->get('sub-cpmk/cari', 'SubCpmk::cari');
 
 	// Master Data CPL
-	$routes->get('cpl', 'CplController::index');
-	$routes->add('cpl/new', 'CplController::create');
-	$routes->add('cpl/(:segment)/edit', 'CplController::edit/$1');
-	$routes->get('cpl/(:segment)/delete', 'CplController::delete/$1');
-	$routes->get('cpl/cari', 'CplController::cari');
+$routes->get('cpl', 'CplController::index');
+
+// CREATE
+$routes->get('cpl/create', 'CplController::create');
+$routes->post('cpl/store', 'CplController::store');
+
+// EDIT
+$routes->get('cpl/edit/(:num)', 'CplController::edit/$1');
+$routes->post('cpl/update/(:num)', 'CplController::update/$1');
+
+// DELETE
+$routes->get('cpl/delete/(:num)', 'CplController::delete/$1');
+
+// SEARCH (opsional)
+$routes->get('cpl/cari', 'CplController::cari');
+
 
 });
