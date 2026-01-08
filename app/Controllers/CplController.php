@@ -8,39 +8,66 @@ use App\Models\MatakuliahModel;
 
 class CplController extends BaseController
 {
+    protected $cplModel;
+    protected $penyusunModel;
+    protected $matakuliahModel;
+
+    public function __construct()
+    {
+        $this->cplModel = new CplModel();
+        $this->penyusunModel = new PenyusunModel();
+        $this->matakuliahModel = new MatakuliahModel();
+    }
+
     public function index()
     {
-        $cpl = new CplModel();
-        $data['cpl'] = $cpl
-            ->select('cpl.*, penyusun.pengembangan_rps, matakuliah.matakuliah')
-            ->join('penyusun', 'penyusun.id = cpl.id_penyusun')
-            ->join('matakuliah', 'matakuliah.id = cpl.id_matakuliah')
-            ->findAll();
-
-        return view('cpl/index', $data);
+        return view('cpl/index', [
+            'cpl' => $this->cplModel->getCplWithRelation()
+        ]);
     }
 
     public function create()
     {
-        $data['penyusun']   = (new PenyusunModel())->findAll();
-        $data['matakuliah'] = (new MatakuliahModel())->findAll();
-        return view('cpl/create', $data);
+        return view('cpl/create', [
+            'penyusun' => $this->penyusunModel->findAll(),
+            'matakuliah' => $this->matakuliahModel->findAll()
+        ]);
     }
 
     public function store()
     {
-        $cpl = new CplModel();
+        $this->cplModel->insert([
+            'id_penyusun' => $this->request->getPost('id_penyusun'),
+            'id_matakuliah' => $this->request->getPost('id_matakuliah'),
+            'cpl_prodi' => $this->request->getPost('cpl_prodi'),
+        ]);
 
-        if (!$cpl->save($this->request->getPost())) {
-            return redirect()->back()->withInput()->with('errors', $cpl->errors());
-        }
+        return redirect()->to('master/cpl')->with('success', 'CPL berhasil ditambahkan');
+    }
 
-        return redirect()->to('/cpl')->with('success', 'CPL berhasil ditambahkan');
+    public function edit($id)
+    {
+        return view('cpl/edit', [
+            'cpl' => $this->cplModel->find($id),
+            'penyusun' => $this->penyusunModel->findAll(),
+            'matakuliah' => $this->matakuliahModel->findAll()
+        ]);
+    }
+
+    public function update($id)
+    {
+        $this->cplModel->update($id, [
+            'id_penyusun' => $this->request->getPost('id_penyusun'),
+            'id_matakuliah' => $this->request->getPost('id_matakuliah'),
+            'cpl_prodi' => $this->request->getPost('cpl_prodi'),
+        ]);
+
+        return redirect()->to('master/cpl')->with('success', 'CPL berhasil diperbarui');
     }
 
     public function delete($id)
     {
-        (new CplModel())->delete($id);
-        return redirect()->to('/cpl')->with('success', 'CPL dihapus');
+        $this->cplModel->delete($id);
+        return redirect()->to('master/cpl')->with('success', 'CPL berhasil dihapus');
     }
 }
