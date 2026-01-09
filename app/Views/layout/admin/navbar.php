@@ -48,6 +48,7 @@
         <ul class="dropdown-menu bg-gray-100" aria-labelledby="masterDataDropdown">
           <li><a class="dropdown-item" href="<?= base_url('master/penyusun') ?>">Penyusun</a></li>
           <li><a class="dropdown-item" href="<?= base_url('master/matakuliah') ?>">Mata Kuliah</a></li>
+          <li><a class="dropdown-item" href="<?= base_url('master/cpl') ?>">CPL</a></li>
         </ul>
       </li>
     </ul>
