@@ -34,6 +34,7 @@
           <li><a class="dropdown-item" href="<?= base_url('table/subcpmk') ?>">Sub CPMK</a></li>
           <li><a class="dropdown-item" href="<?= base_url('table/cpmk') ?>">CPMK</a></li>
           <li><a class="dropdown-item" href="<?= base_url('table/korelasi-cpl-cpmk') ?>">Korelasi CPL CPMK</a></li>
+          <li><a class="dropdown-item" href="<?= base_url('table/cpl') ?>">CPL</a></li>
         </ul>
       </li>
 
@@ -48,7 +49,7 @@
         <ul class="dropdown-menu bg-gray-100" aria-labelledby="masterDataDropdown">
           <li><a class="dropdown-item" href="<?= base_url('master/penyusun') ?>">Penyusun</a></li>
           <li><a class="dropdown-item" href="<?= base_url('master/matakuliah') ?>">Mata Kuliah</a></li>
-          <li><a class="dropdown-item" href="<?= base_url('master/cpl') ?>">CPL</a></li>
+          
         </ul>
       </li>
     </ul>

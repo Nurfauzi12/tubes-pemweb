@@ -72,6 +72,13 @@ $routes->group('table', function ($routes) {
 	$routes->get('korelasi-cpl-cpmk/(:segment)/delete', 'KorelasiCplCpmk::delete/$1');
 	$routes->get('korelasi-cpl-cpmk/cari', 'KorelasiCplCpmk::cari');
 
+	// CPL (Capaian Pembelajaran Lulusan)
+	$routes->get('cpl', 'Cpl::index');
+	$routes->add('cpl/new', 'Cpl::create');
+	$routes->add('cpl/(:segment)/edit', 'Cpl::edit/$1');
+	$routes->get('cpl/(:segment)/delete', 'Cpl::delete/$1');
+	$routes->get('cpl/cari', 'Cpl::cari');
+
 	// ============================================================
 	// LEGACY TABLES (3B & 5 Series)
 	// ============================================================
@@ -168,22 +175,5 @@ $routes->group('master', function ($routes) {
 	$routes->get('sub-cpmk/(:segment)/delete', 'SubCpmk::delete/$1');
 	$routes->get('sub-cpmk/cari', 'SubCpmk::cari');
 
-	// Master Data CPL
-$routes->get('cpl', 'CplController::index');
-
-// CREATE
-$routes->get('cpl/create', 'CplController::create');
-$routes->post('cpl/store', 'CplController::store');
-
-// EDIT
-$routes->get('cpl/edit/(:num)', 'CplController::edit/$1');
-$routes->post('cpl/update/(:num)', 'CplController::update/$1');
-
-// DELETE
-$routes->get('cpl/delete/(:num)', 'CplController::delete/$1');
-
-// SEARCH (opsional)
-$routes->get('cpl/cari', 'CplController::cari');
-
-
+	
 });
